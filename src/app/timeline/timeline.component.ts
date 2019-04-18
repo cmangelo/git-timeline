@@ -15,6 +15,7 @@ export class TimelineComponent implements OnInit {
   user: any;
   repos: Array<Repo>;
   lastRequest: Subscription;
+  query: string;
 
   constructor(private timelineService: TimelineService) { }
 
@@ -27,9 +28,11 @@ export class TimelineComponent implements OnInit {
       this.lastRequest.unsubscribe();
     }
 
-    this.lastRequest = this.timelineService.getUser(this.username).subscribe((response: any) => {
+    this.lastRequest = this.timelineService.getUser(this.query).subscribe((response: any) => {
+      console.log(response);
       this.user = response.data.user;
-      this.repos = this.user.repos.nodes;
+      this.repos = this.user.repositories.nodes;
+      console.log(this.repos);
     });
   }
 }

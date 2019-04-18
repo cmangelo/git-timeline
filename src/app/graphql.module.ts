@@ -3,6 +3,7 @@ import {ApolloModule, APOLLO_OPTIONS} from 'apollo-angular';
 import {HttpLinkModule, HttpLink} from 'apollo-angular-link-http';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 import { setContext } from 'apollo-link-context';
+import { token } from '../git-token';
 
 const uri = 'https://api.github.com/graphql';
 export function createApollo(httpLink: HttpLink) {
@@ -10,7 +11,7 @@ export function createApollo(httpLink: HttpLink) {
 
   const auth = setContext((_, { headers }) => {
     return {headers: {
-      Authorization: `Bearer ffc0c8cfa9a7aa990dbe9df14bf1e6fc9cfd86f5`
+      Authorization: 'Bearer ' + token
   } };
   });
   return {

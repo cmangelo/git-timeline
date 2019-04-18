@@ -1,3 +1,7 @@
-<p>
-  timeline works!
-</p>
+<form (ngSubmit)="getUser()">
+    <input type="text" name="query" id="query" [(ngModel)]="query">
+</form>
+
+<div *ngFor="let repo of repos">
+    <app-timeline-item [repo]="repo"></app-timeline-item>
+</div>
