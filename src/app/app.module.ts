@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TimelineModule } from './timeline/timeline.module';
+import { HomeModule } from './home/home.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,12 @@ import { TimelineModule } from './timeline/timeline.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     GraphQLModule,
     HttpClientModule,
     FormsModule,
-    TimelineModule
+    TimelineModule,
+    HomeModule,
+    RouterModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

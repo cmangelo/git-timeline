@@ -1,8 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { TimelineService } from './timeline.service';
-import { Subscription } from 'rxjs';
 import { Repo } from './models/Repo';
+import { User } from './models/User';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-timeline',
@@ -11,28 +11,19 @@ import { Repo } from './models/Repo';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TimelineComponent implements OnInit {
-  @Input() username: string;
-  user: any;
-  repos: Array<Repo> = null;
-  lastRequest: Subscription;
-  query: string;
+  user: User;
+  repos: Array<Repo>;
 
-  constructor(private timelineService: TimelineService) { }
+  constructor(private route: ActivatedRouteSnapshot) {}
 
   ngOnInit() {
-    this.timelineService.getUser('cmangelo').subscribe(result => console.log(result));
+    this.subscribeToUserData();
   }
 
-  private getUser() {
-    if (this.lastRequest) {
-      this.lastRequest.unsubscribe();
-    }
-
-    this.lastRequest = this.timelineService.getUser(this.query).subscribe((response: any) => {
-      console.log(response);
-      this.user = response.data.user;
-      this.repos = this.user.repositories.nodes;
-      console.log(this.repos);
+  subscribeToUserData() {
+    this.route.data.subscribe((data: { user: User }) => {
+      this.user = data.user;
+      this.repos = this.user.repos;
     });
   }
 }

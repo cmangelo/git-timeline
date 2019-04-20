@@ -10,8 +10,8 @@ import { TimelineItemComponent } from './timeline-item/timeline-item.component';
   declarations: [TimelineComponent, TimelineItemComponent],
   imports: [
     CommonModule,
-    TimelineRoutingModule,
-    FormsModule
+    FormsModule,
+    TimelineRoutingModule
   ],
   exports: [TimelineComponent]
 })
