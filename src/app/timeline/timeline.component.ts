@@ -13,7 +13,7 @@ import { Repo } from './models/Repo';
 export class TimelineComponent implements OnInit {
   @Input() username: string;
   user: any;
-  repos: Array<Repo>;
+  repos: Array<Repo> = null;
   lastRequest: Subscription;
   query: string;
 

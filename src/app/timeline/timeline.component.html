@@ -1,6 +1,12 @@
-<form (ngSubmit)="getUser()">
-    <input type="text" name="query" id="query" [(ngModel)]="query">
-</form>
+<ng-container *ngIf="!repos">
+    <form (ngSubmit)="getUser()">
+        <div class="group">
+            <label for="query">Search For A User</label>
+            <input class="form-control" type="text" name="query" id="query" [(ngModel)]="query">
+            <button class="btn btn-success">Go!</button>
+        </div>
+    </form>
+</ng-container>
 
 <div *ngFor="let repo of repos">
     <app-timeline-item [repo]="repo"></app-timeline-item>
