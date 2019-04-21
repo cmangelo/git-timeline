@@ -9,6 +9,9 @@ const routes: Routes = [
     component: TimelineComponent,
     resolve: {
       user : TimelineUserResolverService
+    },
+    data: {
+      animation: 'timeline'
     }
   }
 ];

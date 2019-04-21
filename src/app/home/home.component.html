@@ -4,7 +4,7 @@
         <input class="form-control" type="text" name="query" id="query" [(ngModel)]="query">
         <div>
             <p>
-                <span *ngIf="error">No user exists with the username entered</span>
+                <span *ngIf="error">User not found</span>
             </p>
             <button class="btn btn-success">Go!</button>
         </div>
