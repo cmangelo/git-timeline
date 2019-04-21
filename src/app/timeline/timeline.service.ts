@@ -10,7 +10,7 @@ const GET_USER = gql`query($username: String!) {
     login
     name
     url
-    repositories(first: 10, orderBy: { direction: ASC, field: CREATED_AT}) {
+    repositories(last: 25, orderBy: { direction: ASC, field: CREATED_AT}) {
       nodes {
         id
         name

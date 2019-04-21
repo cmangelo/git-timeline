@@ -1,4 +1,4 @@
-export interface Repo {
+export interface RepoNode {
     id: string;
     name: string;
     url: string;

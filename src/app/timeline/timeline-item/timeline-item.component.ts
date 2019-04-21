@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { Repo } from '../models/Repo';
+import { RepoNode } from '../models/RepoNode';
 
 @Component({
   selector: 'app-timeline-item',
@@ -8,7 +8,7 @@ import { Repo } from '../models/Repo';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TimelineItemComponent implements OnInit {
-  @Input() repo: Repo;
+  @Input() repo: RepoNode;
 
   constructor() { }
 

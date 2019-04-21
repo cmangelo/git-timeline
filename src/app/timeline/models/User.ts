@@ -1,4 +1,4 @@
-import { Repo } from './Repo';
+import { Repositories } from './Repositories';
 
 export interface User {
     id: string;
@@ -6,5 +6,5 @@ export interface User {
     login: string;
     name: string;
     avatarUrl: string;
-    repos: Array<Repo>;
+    repositories: Repositories;
 }

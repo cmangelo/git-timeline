@@ -9,13 +9,14 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   query: string;
+  error: boolean;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-    // this.timelineService.getUser('cmangelo').subscribe(result => console.log(result));
   }
   navigateToTimeline() {
     this.router.navigate(['/timeline', this.query])
+      .catch(() => this.error = true);
   }
 }

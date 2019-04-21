@@ -1,10 +1,12 @@
-<ng-container *ngIf="!repos">
-    <form (ngSubmit)="navigateToTimeline()">
-        <div class="group">
-            <label for="query">Search For A User</label>
-            <input class="form-control" type="text" name="query" id="query" [(ngModel)]="query">
+<form (ngSubmit)="navigateToTimeline()">
+    <div class="group">
+        <label for="query">Search For A User</label>
+        <input class="form-control" type="text" name="query" id="query" [(ngModel)]="query">
+        <div>
+            <p>
+                <span *ngIf="error">No user exists with the username entered</span>
+            </p>
             <button class="btn btn-success">Go!</button>
         </div>
-    </form>
-</ng-container>
-
+    </div>
+</form>

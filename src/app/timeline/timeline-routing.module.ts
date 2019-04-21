@@ -8,7 +8,7 @@ const routes: Routes = [
     path: 'timeline/:username',
     component: TimelineComponent,
     resolve: {
-      repos: TimelineUserResolverService
+      user : TimelineUserResolverService
     }
   }
 ];

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve, Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
-import { Observable, of, EMPTY } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { Observable, of,  throwError } from 'rxjs';
+import { mergeMap, take } from 'rxjs/operators';
 
 import { User } from './models/User';
 import { TimelineService } from './timeline.service';
@@ -15,12 +15,14 @@ export class TimelineUserResolverService implements Resolve<User>{
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): User | Observable<User> {
     let username = route.paramMap.get('username');
 
-    return this.service.getUser(username).pipe(mergeMap((result: any) => {
+    return this.service.getUser(username).pipe(take(1),mergeMap((result: any) => {
       if (result) {
-        return of(result.data.users);
+        console.log(result.data.user)
+        return of(result.data.user);
       } else {
-        this.router.navigate(['/'])
-        return EMPTY;
+        // this.router.navigate(['/'])
+        console.log(result);
+        return throwError("error");
       }
     }))
   }

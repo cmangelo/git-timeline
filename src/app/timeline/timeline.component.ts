@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { Repo } from './models/Repo';
 import { User } from './models/User';
-import { ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { RepoNode } from './models/RepoNode';
 
 @Component({
   selector: 'app-timeline',
@@ -12,18 +12,18 @@ import { ActivatedRouteSnapshot } from '@angular/router';
 })
 export class TimelineComponent implements OnInit {
   user: User;
-  repos: Array<Repo>;
+  repos: Array<RepoNode>;
 
-  constructor(private route: ActivatedRouteSnapshot) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.subscribeToUserData();
   }
 
   subscribeToUserData() {
-    this.route.data.subscribe((data: { user: User }) => {
+    this.route.data.subscribe((data: {user: User}) => {
       this.user = data.user;
-      this.repos = this.user.repos;
+      this.repos = this.user.repositories.nodes;
     });
   }
 }
