@@ -1,7 +1,4 @@
-<div class="card">
-	<h4>{{repo.name}}</h4>
-	<div class="bottom">
-		<div>{{repo.createdAt | date}}</div>
-		<a [href]="repo.url"><button class="btn btn-success">Visit</button></a>
-	</div>
+<div class="repo">
+	<a [href]="repo.url">{{repo.name}}</a>
+	<div>{{repo.createdAt | date}}</div>
 </div>

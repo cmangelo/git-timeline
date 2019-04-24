@@ -1,4 +1,16 @@
-<button class="btn btn-success" routerLink="/">Search Again</button>
-<div *ngFor="let repo of repos">
-    <app-timeline-item [repo]="repo"></app-timeline-item>
+<button class="btn btn-success" routerLink="/">New Search</button>
+
+<div class="now">Now</div>
+<div class="inner">
+    <div class="line">
+        <div [@listStagger]='repos.length' class="list">
+            <div *ngFor="let repo of repos; let i = index">
+                <div class="dot"></div>
+                <div [ngClass]="i%2==0 ? 'left' : 'right' ">
+                    <app-timeline-item [repo]="repo"></app-timeline-item>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="beginning">Beginning</div>
